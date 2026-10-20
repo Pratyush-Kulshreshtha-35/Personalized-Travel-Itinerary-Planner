@@ -1,0 +1,51 @@
+# ============================================================================
+# Render Infrastructure Blueprint (render.yaml)
+# Personalized Travel Itinerary Planner
+# Milestone 6: Deployment (Activity 6.1 & 6.2)
+# ============================================================================
+services:
+  # Backend API Service (FastAPI Python)
+  - type: web
+    name: travel-planner-api
+    runtime: python
+    region: oregon
+    plan: free
+    branch: main
+    rootDir: "5. Project Development Phase/backend"
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: CORS_ORIGINS
+        value: "https://travel-planner-frontend.vercel.app,https://travel-planner-frontend.onrender.com,http://localhost:5173"
+      - key: ENVIRONMENT
+        value: production
+
+  # Frontend Web Service (Static React Vite Site on Render)
+  - type: web
+    name: travel-planner-frontend
+    runtime: static
+    region: oregon
+    plan: free
+    branch: main
+    rootDir: "5. Project Development Phase/frontend"
+    buildCommand: "npm install && npm run build"
+    staticPublishPath: "./dist"
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        value: "https://travel-planner-api.onrender.com"
+      - key: VITE_SUPABASE_URL
+        sync: false
+      - key: VITE_SUPABASE_ANON_KEY
+        sync: false
