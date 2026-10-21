@@ -4,10 +4,18 @@
 [![Google Gemini](https://img.shields.io/badge/Google%20Gemini-2.5%20Flash-8E75B2?logo=google&logoColor=white)](https://aistudio.google.com)
 [![React](https://img.shields.io/badge/React-18.3-61DAFB?logo=react&logoColor=black)](https://react.dev)
 [![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?logo=supabase&logoColor=white)](https://supabase.com)
-[![Render](https://img.shields.io/badge/Render-Deployment-46E3B7?logo=render&logoColor=white)](https://render.com)
-[![Vercel](https://img.shields.io/badge/Vercel-Frontend-000000?logo=vercel&logoColor=white)](https://vercel.com)
+[![Vercel](https://img.shields.io/badge/Vercel-Live%20Demo-black?logo=vercel&logoColor=white)](https://personalized-travel-itinerary-plann-lac.vercel.app/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A state-of-the-art **Personalized Travel Itinerary Planner** that transforms your abstract travel desires ("chill sunsets", "high-adrenaline adventure", "Michelin street foodie", "deep cultural immersion") into day-by-day, geographically optimized, and budget-conscious travel itineraries powered by **Google Gemini AI**.
+
+---
+
+## 🔗 Quick Links
+
+- 🌐 **Live Application**: [https://personalized-travel-itinerary-plann-lac.vercel.app/](https://personalized-travel-itinerary-plann-lac.vercel.app/)
+- 🐙 **GitHub Repository**: [https://github.com/Pratyush-Kulshreshtha-35/Personalized-Travel-Itinerary-Planner](https://github.com/Pratyush-Kulshreshtha-35/Personalized-Travel-Itinerary-Planner)
+- 🎥 **Video Demonstration**: [Watch Video Demo](https://drive.google.com/file/d/1_ybPblR5YJTY-4poagXpQloV_GE0qdKe/view?usp=sharing)
 
 ---
 
@@ -19,9 +27,9 @@ A state-of-the-art **Personalized Travel Itinerary Planner** that transforms you
 - 📅 **Dynamic Itinerary Builder**: Comprehensive morning-to-night timeline scheduling with activity duration, estimated costs, and local insider tips.
 - ⚡ **Route & Time Optimization**: Geographic clustering and 2-opt TSP route solver minimizing daily transit times.
 - 🎛️ **Vibe-Based Personalization**: Real-time slider adaptation (+40% Adventure, Sunset & Chill Mode, Deep Culture).
+- 💬 **Interactive AI Travel Chatbot**: Conversational travel assistant to answer trip queries and refine plans dynamically.
 - 💾 **Trip Save & Management**: Save, edit, duplicate, and archive itineraries with Supabase PostgreSQL cloud sync.
 - 📤 **Multi-Format Export Module**: One-click download of `.ics` calendar events (Apple/Google Calendar), raw JSON, or printable luxury PDF dossiers.
-
 
 ---
 
@@ -29,45 +37,56 @@ A state-of-the-art **Personalized Travel Itinerary Planner** that transforms you
 
 ```
 PERSONALIZED TRAVEL ITINERARY PLANNER/
-├── backend/
-│   ├── app/
-│   │   ├── config.py
-│   │   ├── supabase_client.py
-│   │   ├── models.py
-│   │   ├── routes/
-│   │   │   ├── preferences.py
-│   │   │   ├── recommendations.py
-│   │   │   ├── itineraries.py
-│   │   │   ├── trips.py
-│   │   │   └── export.py
-│   │   └── services/
-│   │       ├── recommendation_service.py
-│   │       ├── itinerary_service.py
-│   │       ├── route_optimizer.py
-│   │       ├── vibe_engine.py
-│   │       └── export_service.py
-│   ├── database/
-│   │   └── schema.sql                # Supabase PostgreSQL DDL & Seed Data
-│   ├── requirements.txt              # FastAPI dependencies
-│   ├── .env.example
-│   └── main.py                       # FastAPI Application Entrypoint
-├── frontend/
-│   ├── src/
-│   │   ├── components/               # UI Component Hierarchy
-│   │   ├── services/                 # API & Supabase Client
-│   │   ├── App.jsx                   # Main Application Shell
-│   │   ├── index.css                 # Bespoke Glassmorphism Design System
-│   │   └── main.jsx
-│   ├── package.json
-│   ├── vite.config.js
-│   └── index.html
-├── .gitignore
+├── 1. Brainstorming & Ideation/      # Ideation notes & problem statements
+├── 2. Requirement Analysis/          # Functional & non-functional requirements
+├── 3. Project Design Phase/          # UI wireframes, system diagrams & architecture
+├── 4. Project Planning Phase/        # Milestones, task breakdown & timelines
+├── 5. Project Development Phase/     # Core Application Source Code
+│   ├── backend/                      # FastAPI Python Application
+│   │   ├── app/
+│   │   │   ├── config.py             # Environment configurations
+│   │   │   ├── models.py             # Pydantic schemas & data models
+│   │   │   ├── supabase_client.py    # Supabase PostgreSQL client
+│   │   │   ├── routes/               # API Endpoints
+│   │   │   │   ├── auth.py           # Authentication routes
+│   │   │   │   ├── chat.py           # AI Chatbot endpoint
+│   │   │   │   ├── export.py         # PDF, ICS & JSON exports
+│   │   │   │   ├── itineraries.py    # Itinerary management
+│   │   │   │   ├── preferences.py    # User vibe & preferences
+│   │   │   │   ├── recommendations.py# Destination recommendations
+│   │   │   │   ├── storage.py        # Cloud media storage
+│   │   │   │   └── trips.py          # Saved trips CRUD
+│   │   │   └── services/             # Core Business & AI Logic
+│   │   │       ├── export_service.py # PDF / ICS generator
+│   │   │       ├── gemini_service.py # Google Gemini 2.5 Flash integration
+│   │   │       ├── itinerary_service.py # Itinerary generation & scheduling
+│   │   │       ├── recommendation_service.py # AI match scoring
+│   │   │       ├── route_optimizer.py # 2-opt TSP distance optimizer
+│   │   │       └── vibe_engine.py    # Multi-dimensional vibe engine
+│   │   ├── database/
+│   │   │   └── schema.sql            # Supabase PostgreSQL DDL & Seed Data
+│   │   ├── requirements.txt          # Python dependencies
+│   │   ├── .env.example              # Backend environment template
+│   │   └── main.py                   # FastAPI Application Entrypoint
+│   └── frontend/                     # React (Vite) Web Application
+│       ├── src/
+│       │   ├── components/           # Glassmorphic UI Components
+│       │   ├── services/             # API & Supabase Client
+│       │   ├── utils/                # Helper utilities
+│       │   ├── App.jsx               # Main React Application
+│       │   ├── index.css             # Glassmorphism Design System
+│       │   └── main.jsx              # React Entrypoint
+│       ├── package.json              # NPM dependencies & scripts
+│       ├── vite.config.js            # Vite configuration
+│       └── index.html                # HTML entrypoint
+├── 6. Project Testing/               # Test suites, unit tests & QA reports
+├── 7. Project Documentation/         # Comprehensive project docs & user guides
+├── 8. Project Demonstration/         # Demo slides, scripts & presentation assets
 ├── API.md                            # OpenAPI / REST Endpoints
 ├── ARCHITECTURE.md                   # System Architecture & Mermaid Diagrams
 ├── DEPLOYMENT.md                     # Render & Vercel Deployment Guide
-├── PROJECT_COMPLETION.md             # 7-Milestone Verification Report
 ├── README.md                         # Project Overview
-├── render.yaml                       # Render Infrastructure Blueprint
+├── render.yaml                       # Render Cloud Blueprint
 └── SETUP.md                          # Local Development Guide
 ```
 
@@ -75,41 +94,72 @@ PERSONALIZED TRAVEL ITINERARY PLANNER/
 
 ## 🚀 Quick Start
 
-### 1. Prerequisites
-- **Node.js** v18+ & **npm**
-- **Python** 3.10+ & **pip**
-- (Optional) Free account at [supabase.com](https://supabase.com)
+### 1. Clone the Repository
+```bash
+git clone https://github.com/Pratyush-Kulshreshtha-35/Personalized-Travel-Itinerary-Planner.git
+cd Personalized-Travel-Itinerary-Planner
+```
 
 ### 2. Backend Setup (FastAPI)
 ```bash
-cd backend
+cd "5. Project Development Phase/backend"
+
+# Create and activate a virtual environment
+python -m venv venv
+# On Windows:
+venv\Scripts\activate
+# On macOS/Linux:
+# source venv/bin/activate
+
+# Install dependencies
 pip install -r requirements.txt
+
+# Run the backend server
 uvicorn main:app --reload --port 8000
 ```
-- API Docs: [http://localhost:8000/docs](http://localhost:8000/docs)
-- Health Check: [http://localhost:8000/api/health](http://localhost:8000/api/health)
+- **API Documentation (Swagger UI)**: [http://localhost:8000/docs](http://localhost:8000/docs)
+- **API Health Check**: [http://localhost:8000/api/health](http://localhost:8000/api/health)
 
 ### 3. Frontend Setup (React + Vite)
+Open a new terminal window:
 ```bash
-cd frontend
+cd "5. Project Development Phase/frontend"
+
+# Install dependencies
 npm install
+
+# Start the development server
 npm run dev
 ```
-- Web Application: [http://localhost:5173](http://localhost:5173)
+- **Web Application**: [http://localhost:5173](http://localhost:5173)
 
 ---
 
 ## 🗄️ Database Setup (Supabase)
-1. Create a project at [supabase.com](https://supabase.com).
-2. Open **SQL Editor** and paste the code from [`backend/database/schema.sql`](file:///c:/Users/praty/OneDrive/Desktop/Personalized%20Travel%20Itinerary%20Planner/backend/database/schema.sql).
-3. Copy your project credentials into `backend/.env` and `frontend/.env`.
+1. Create a free project at [supabase.com](https://supabase.com).
+2. Open the **SQL Editor** in the Supabase Dashboard.
+3. Paste and run the SQL code from [`5. Project Development Phase/backend/database/schema.sql`](file:///c:/Users/praty/OneDrive/Desktop/Personalized%20Travel%20Itinerary%20Planner/5.%20Project%20Development%20Phase/backend/database/schema.sql).
+4. Configure your credentials in:
+   - `5. Project Development Phase/backend/.env`
+   - `5. Project Development Phase/frontend/.env`
 
 ---
 
-## 📖 Complete Documentation Links
+## 📖 Documentation Links
+- 🌐 [Live Deployment](https://personalized-travel-itinerary-plann-lac.vercel.app/)
+- 🎥 [Video Demonstration](https://drive.google.com/file/d/1_ybPblR5YJTY-4poagXpQloV_GE0qdKe/view?usp=sharing)
 - 📘 [Developer Setup Guide (`SETUP.md`)](file:///c:/Users/praty/OneDrive/Desktop/Personalized%20Travel%20Itinerary%20Planner/SETUP.md)
 - 🔌 [REST API Documentation (`API.md`)](file:///c:/Users/praty/OneDrive/Desktop/Personalized%20Travel%20Itinerary%20Planner/API.md)
-- 🏗️ [System Architecture & ERD (`ARCHITECTURE.md`)](file:///c:/Users/praty/OneDrive/Desktop/Personalized%20Travel%20Itinerary%20Planner/ARCHITECTURE.md)
-- 🚀 [Production Deployment (`DEPLOYMENT.md`)](file:///c:/Users/praty/OneDrive/Desktop/Personalized%20Travel%20Itinerary%20Planner/DEPLOYMENT.md)
-- 🏆 [Milestone Completion Report (`PROJECT_COMPLETION.md`)](file:///c:/Users/praty/OneDrive/Desktop/Personalized%20Travel%20Itinerary%20Planner/PROJECT_COMPLETION.md)
-- ⚙️ [Render Blueprint (`render.yaml`)](file:///c:/Users/praty/OneDrive/Desktop/Personalized%20Travel%20Itinerary%20Planner/render.yaml)
+- 🏗️ [System Architecture & Diagrams (`ARCHITECTURE.md`)](file:///c:/Users/praty/OneDrive/Desktop/Personalized%20Travel%20Itinerary%20Planner/ARCHITECTURE.md)
+- 🚀 [Production Deployment Guide (`DEPLOYMENT.md`)](file:///c:/Users/praty/OneDrive/Desktop/Personalized%20Travel%20Itinerary%20Planner/DEPLOYMENT.md)
+- ⚙️ [Render Cloud Blueprint (`render.yaml`)](file:///c:/Users/praty/OneDrive/Desktop/Personalized%20Travel%20Itinerary%20Planner/render.yaml)
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see the LICENSE file for details.
+
+---
+
+**By - Pratyush Kulshreshtha**
